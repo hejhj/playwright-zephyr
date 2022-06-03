@@ -24,7 +24,7 @@ class ZephyrReporter implements Reporter {
     if (!reporter)
       throw new Error('Please provide required options in the config file: host, projectKey, user and password or authorizationToken');
 
-    const [, { host, user, password, projectKey, authorizationToken }] = reporter;
+    const [, { host, user, password, projectKey, authorizationToken, ...extraConfig }] = reporter;
 
     this.projectKey = projectKey;
 
@@ -34,6 +34,7 @@ class ZephyrReporter implements Reporter {
       password,
       authorizationToken,
       projectKey,
+      ...extraConfig
     });
   }
 
